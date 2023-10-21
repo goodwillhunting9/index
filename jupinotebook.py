@@ -1,56 +1,15 @@
-{
-    "configurations": [
-        
+# Consolidated code for the Farmer, Wolf, Goat, and Cabbage problem
 
-    {
-        "args": [
-            "--extensionDevelopmentPath=${workspaceFolder}"
-        ],
-        "name": "Launch Extension",
-        "outFiles": [
-            "${workspaceFolder}/out/**/*.js"
-        ],
-        "preLaunchTask": "npm",
-        "request": "launch",
-        "type": "extensionHost"
-    }
-    ]
-}import heapq
+import heapq
 
-# Download required packages
-import package1
-import package2
+# 1. State representation and initialization
 
-# Define variables
 initial_state = ('E', 'E', 'E', 'E')
 goal_state = ('W', 'W', 'W', 'W')
 
-# Define safety check function
+# 2. Safety check function
+
 def is_safe(state):
-    """
-    Determines if the given state is safe or not.
-
-    Args:
-        state (tuple): A tuple representing the current state of the farmer, wolf, goat, and cabbage.
-
-    Returns:
-        bool: True if the state is safe, False otherwise.
-    def is_safe(state):
-        """
-        Determines whether a given state is safe or not.
-
-        Args:
-            state (tuple): A tuple representing the current state of the farmer, wolf, goat, and cabbage.
-
-        Returns:
-            bool: True if the state is safe, False otherwise.
-        """
-        farmer, wolf, goat, cabbage = state
-        if farmer != wolf and wolf == goat:
-            return False
-        if farmer != goat and goat == cabbage:
-            return False
-        return True"""
     farmer, wolf, goat, cabbage = state
     if farmer != wolf and wolf == goat:
         return False
@@ -58,7 +17,8 @@ def is_safe(state):
         return False
     return True
 
-# Define possible moves function
+# 3. Possible Moves Function
+
 def possible_moves(state):
     farmer, wolf, goat, cabbage = state
     moves = []
@@ -71,7 +31,7 @@ def possible_moves(state):
     moves.append(('F', ('W' if farmer == 'E' else 'E', wolf, goat, cabbage)))
     return moves
 
-# Define DFS algorithm
+# 4. DFS Algorithm
 def dfs(start_state, goal_state):
     """
     Performs a depth-first search to find a path from the start_state to the goal_state.
@@ -95,7 +55,7 @@ def dfs(start_state, goal_state):
                 stack.append((new_state, path + [state]))
     return None
 
-# Define A* search algorithm
+# 5. A* Search algorithm
 def heuristic(state, goal_state):
     return sum([1 for i in range(len(state)) if state[i] != goal_state[i]])
 
@@ -107,13 +67,14 @@ def astar(start_state, goal_state):
         if state == goal_state:
             return path + [state]
         if state not in explored:
+            explored.add(state)
             for move, new_state in possible_moves(state):
                 new_cost = cost + 1
                 priority = new_cost + heuristic(new_state, goal_state)
                 heapq.heappush(queue, (priority, new_state, path + [state]))
     return None
 
-# Define main function
+# 6. Main Function
 def main():
     print('Starting state:', initial_state)
     print('Goal state:', goal_state)
@@ -130,5 +91,5 @@ def main():
     else:
         print('No A* search path found')
 
-# Call main function
-main()
+# Uncomment the line below to run the main function
+# main()
