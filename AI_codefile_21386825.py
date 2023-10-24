@@ -1,6 +1,13 @@
-import package2
-import package1
-import heapq
+{% load     """
+    The above code defines a depth-first search algorithm to find a path from a start state to a goal
+    state in a problem involving a farmer, a wolf, a goat, and a cabbage.
+
+    :param state: The state represents the current configuration of the puzzle. In this case, the state
+    is a tuple of four elements: (farmer, wolf, goat, cabbage). Each element can have two possible
+    values: 'E' (for east) or 'W' (for west). The farmer represents the
+    :return: The function dfs is returning a list of tuples representing the path from the start_state
+    to the goal_state.
+    """
 
 # Download required packages
 !pip install package1
@@ -49,8 +56,14 @@ def dfs(start_state, goal):
     Performs a depth-first search to find a path from the start_state to the goal_state.
 
     Args:
-        start_state (any): The starting state of the search.
-        goal (any): The goal state of the search.
+    """dfs AI is creating summary for dfs
+
+    [extended_summary]
+    """        start_state (any): The starting state of the search.
+    """dfs _summary_
+
+    _extended_summary_
+    """        goal (any): The goal state of the search.
 
     Returns:
         A list of tuples representing the path from the start_state to the goal_state.
@@ -67,3 +80,4 @@ def dfs(start_state, goal):
                 if is_safe(next_state):
                     stack.append((next_state, path + [state, move]))
     return None
+_tags %}
