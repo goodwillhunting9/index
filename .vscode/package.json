@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "none": null
+    "openai": "^4.12.4"
   }
 }
