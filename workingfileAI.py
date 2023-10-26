@@ -1,8 +1,8 @@
-import heapq
+    import heapq
 
 initial_state = ('E', 'E', 'E', 'E')
 goal_state = ('W', 'W', 'W', 'W')
-
+    
 def is_safe(state):
     farmer, wolf, goat, cabbage = state
     if farmer != wolf and wolf == goat:
